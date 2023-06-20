@@ -1,95 +1,161 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import React, { useRef } from 'react';
+import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax';
+import HomePageParallaxLayer from './HomePageParallaxLayer/page';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+// Little helpers ...
+const url = (name: string, wrap = false) =>
+	`${
+		wrap ? 'url(' : ''
+	}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
+		wrap ? ')' : ''
+	}`;
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+export default function App() {
+	const parallax = useRef<IParallax>(null!);
+	return (
+		<div style={{ width: '100%', height: '100%', background: '#253237' }}>
+			<Parallax ref={parallax} pages={3}>
+				<ParallaxLayer
+					offset={0}
+					speed={0}
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						right: 0,
+            width:'20%',
+						zIndex: 1,
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'space-between',
+					}}>
+					<h1
+						style={{
+							margin: 0,
+							color: 'blue',
+              padding: '30px',
+							fontSize: '1em',
+							writingMode: 'vertical-lr',
+						}}>
+						Home | Services | Clients | Testimonials  About | Contact |
+						Instagram |  New Client Form
+					</h1>
+				</ParallaxLayer>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+				<ParallaxLayer
+					offset={1}
+					speed={1}
+					style={{ backgroundColor: 'rgba(254,225,219,1)' }}
+				/>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+				<ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '55%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '10%', marginLeft: '15%' }}
+					/>
+				</ParallaxLayer>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+				<ParallaxLayer offset={1.75} speed={0.5} style={{ opacity: 0.1 }}>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '70%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '40%' }}
+					/>
+				</ParallaxLayer>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+				<ParallaxLayer offset={1} speed={0.2} style={{ opacity: 0.2 }}>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '10%', marginLeft: '10%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '75%' }}
+					/>
+				</ParallaxLayer>
+
+				<ParallaxLayer offset={1.6} speed={-0.1} style={{ opacity: 0.4 }}>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '60%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '25%', marginLeft: '30%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '10%', marginLeft: '80%' }}
+					/>
+				</ParallaxLayer>
+
+				<ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '20%', marginLeft: '5%' }}
+					/>
+					<img
+						src={url('cloud')}
+						style={{ display: 'block', width: '15%', marginLeft: '75%' }}
+					/>
+				</ParallaxLayer>
+
+				<ParallaxLayer
+					offset={2.5}
+					speed={-0.4}
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						pointerEvents: 'none',
+					}}>
+					<img src={url('earth')} style={{ width: '60%' }} />
+				</ParallaxLayer>
+
+				<ParallaxLayer
+					offset={2}
+					speed={-0.3}
+					style={{
+						backgroundSize: '80%',
+						backgroundPosition: 'center',
+						backgroundImage: url('clients', true),
+					}}
+				/>
+
+				<HomePageParallaxLayer onClick={() => parallax.current.scrollTo(1)} />
+
+				<ParallaxLayer
+					offset={1}
+					speed={0.1}
+					onClick={() => parallax.current.scrollTo(2)}
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}>
+					<img src={url('bash')} style={{ width: '40%' }} />
+				</ParallaxLayer>
+
+				<ParallaxLayer
+					offset={2}
+					speed={-0}
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+					onClick={() => parallax.current.scrollTo(0)}>
+					<img src={url('clients-main')} style={{ width: '40%' }} />
+				</ParallaxLayer>
+			</Parallax>
+		</div>
+	);
 }
