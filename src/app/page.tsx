@@ -31,22 +31,22 @@ export default function App() {
 					}}>
 					<h1
 						style={{
-							margin: 0,
+							marginLeft: '10px',
 							color: 'black',
 							padding: '15px',
 							fontSize: '1.5em',
 						}}>
-						About | Contact | Instagram | New Client Form
+						About | Contact | Services | New Client Form |
 					</h1>
 					<h1
 						style={{
-							margin: 0,
+							marginTop: '0px',
 							color: 'black',
 							padding: '15px',
 							fontSize: '1.5em',
 							writingMode: 'vertical-lr',
 						}}>
-						Home | Services | Clients | Testimonials
+						Home | Testimonials | Clients |
 					</h1>
 				</ParallaxLayer>
 
@@ -137,9 +137,12 @@ export default function App() {
 					}}
 				/>
 
-				<HomePageParallaxLayer onClick={() => parallax.current.scrollTo(1)}
-				 style={{
-					position: 'absolute'}}/>
+				<HomePageParallaxLayer
+					onClick={() => parallax.current.scrollTo(1)}
+					style={{
+						position: 'absolute',
+					}}
+				/>
 
 				<ParallaxLayer
 					offset={1}

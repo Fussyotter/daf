@@ -6,21 +6,45 @@ import { useSpring, animated } from 'react-spring';
 const HomePageParallaxLayer: React.FC<{ onClick: () => void }> = ({
 	onClick,
 }) => {
-const fadeIn1 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 500,
-});
-const fadeIn2 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 1000,
-});
-const fadeIn3 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 1500,
-});
+		const [borderAnimation, setBorderAnimation] = React.useState(false);
+		React.useEffect(() => {
+			const timer = setTimeout(() => {
+				setBorderAnimation(true);
+			}, 2000);
+			return () => clearTimeout(timer);
+		}, []);
+	const fadeInImage = useSpring({
+		from: { opacity: 0 },
+		to: { opacity: 1 },
+		delay: 2500,
+		config: {
+			duration: 1000,
+		},
+	});
+	const slideInText = useSpring({
+		from: { transform: 'translate3d(0,10%,0)' , opacity: 0},
+		to: { transform: 'translate3d(0,0,0)', opacity: 1 },
+		delay: 1000,
+		config: {
+			duration: 600,
+		},
+	});
+		const slideInText2 = useSpring({
+			from: { transform: 'translate3d(0,10%,0)', opacity: 0 },
+			to: { transform: 'translate3d(0,0,0)', opacity: 1 },
+			delay: 1500,
+			config: {
+				duration: 600,
+			},
+		});
+			const slideInText3 = useSpring({
+				from: { transform: 'translate3d(0,10%,0)', opacity: 0 },
+				to: { transform: 'translate3d(0,0,0)', opacity: 1 },
+				delay: 2000,
+				config: {
+					duration: 600,
+				},
+			});
 
 	return (
 		<ParallaxLayer
@@ -43,7 +67,8 @@ const fadeIn3 = useSpring({
 					flexDirection: 'row',
 					justifyContent: 'space-between',
 				}}>
-				<div
+				<div 			className={`animatedBorder ${borderAnimation ? 'animated' : ''}`}
+
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
@@ -55,12 +80,12 @@ const fadeIn3 = useSpring({
 						marginRight: '150px',
 						width: '100%',
 					}}>
-					<div style={{ fontSize: '5em', color: 'black' }}>Dear</div>
-					<div style={{ fontSize: '5em', color: 'black' }}>Actor</div>
-					<div style={{ fontSize: '5em', color: 'black', }}>Friends</div>
-					<p style={{ fontSize: '2em', color: 'black', marginTop: '2em'}}>
-						With Alison Yates
-					</p>
+					<animated.div style={{ ...slideInText, fontSize: '5em', color: 'black' }}>Dear</animated.div>
+					<animated.div style={{ ...slideInText2, fontSize: '5em', color: 'black' }}>Actor</animated.div>
+					<animated.div style={{ ...slideInText3, fontSize: '5em', color: 'black' }}>Friends,</animated.div>
+					<animated.p style={{ ...slideInText, fontSize: '2em', color: 'black', marginTop: '2em' }}>
+						With Alison Yates.
+					</animated.p>
 				</div>
 				<div
 					style={{
@@ -70,24 +95,12 @@ const fadeIn3 = useSpring({
 						justifyContent: 'space-between',
 						width: '100%',
 						flex: 1,
-											}}>
+					}}>
 					<animated.div
 						style={{
-							...fadeIn1,
-							marginRight: '2px',
-							color: 'black',
-							background: 'white',
-							padding: '20px',
-							boxSizing: 'border-box',
+							...fadeInImage,
+							flex: 1,
 						}}>
-						I specialize in headshot styling, career consultations and audition
-						coaching. I have had clients book roles on major network television
-						shows, sign with new representation and have the best headshot
-						sessions of their lives after meeting with me.
-						<br />
-				
-					</animated.div>
-					<animated.div style={{ ...fadeIn2,flex: 1 }}>
 						<img
 							src='placeholder1.jpg'
 							alt='Your Image'
@@ -96,7 +109,22 @@ const fadeIn3 = useSpring({
 					</animated.div>
 					<animated.div
 						style={{
-							...fadeIn3,
+							...slideInText3,
+							marginRight: '2px',
+							color: 'black',
+							// background: 'white',
+							padding: '20px',
+							boxSizing: 'border-box',
+						}}>
+						I specialize in headshot styling, career consultations and audition
+						coaching. I have had clients book roles on major network television
+						shows, sign with new representation and have the best headshot
+						sessions of their lives after meeting with me.
+						<br />
+					</animated.div>
+				
+					{/* <animated.div
+						style={{
 							flex: 1,
 							marginRight: '2px',
 							color: 'black',
@@ -104,12 +132,11 @@ const fadeIn3 = useSpring({
 							padding: '20px',
 							boxSizing: 'border-box',
 						}}>
-					
 						<br />I started ‘Dear Actor Friends’ as a way of helping other
 						actors. I love connecting with each of you and building my actor
 						community. If I can help you in any way shape or form, then this
 						crazy ride of a career I’ve been on, has truly been worth it.
-					</animated.div>
+					</animated.div> */}
 				</div>
 			</div>
 		</ParallaxLayer>
