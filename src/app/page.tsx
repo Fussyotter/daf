@@ -14,39 +14,46 @@ const url = (name: string, wrap = false) =>
 export default function App() {
 	const parallax = useRef<IParallax>(null!);
 	return (
-		<div style={{ width: '100%', height: '100%', background: '#253237' }}>
+		<div style={{ width: '100%', height: '100%', background: '#3E4A89' }}>
 			<Parallax ref={parallax} pages={3}>
 				<ParallaxLayer
 					offset={0}
 					speed={0}
+					onClick={() => parallax.current.scrollTo(1)}
 					style={{
 						position: 'absolute',
 						top: 0,
 						left: 0,
 						right: 0,
-            width:'20%',
 						zIndex: 1,
-            display:'flex',
-            flexDirection:'column',
-            justifyContent:'space-between',
+						display: 'flex',
+						flexDirection: 'column',
 					}}>
 					<h1
 						style={{
 							margin: 0,
-							color: 'blue',
-              padding: '30px',
-							fontSize: '1em',
+							color: 'black',
+							padding: '15px',
+							fontSize: '1.5em',
+						}}>
+						About | Contact | Instagram | New Client Form
+					</h1>
+					<h1
+						style={{
+							margin: 0,
+							color: 'black',
+							padding: '15px',
+							fontSize: '1.5em',
 							writingMode: 'vertical-lr',
 						}}>
-						Home | Services | Clients | Testimonials  About | Contact |
-						Instagram |  New Client Form
+						Home | Services | Clients | Testimonials
 					</h1>
 				</ParallaxLayer>
 
 				<ParallaxLayer
 					offset={1}
 					speed={1}
-					style={{ backgroundColor: 'rgba(254,225,219,1)' }}
+					style={{ backgroundColor: '#3E4A89' }}
 				/>
 
 				<ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
@@ -130,7 +137,9 @@ export default function App() {
 					}}
 				/>
 
-				<HomePageParallaxLayer onClick={() => parallax.current.scrollTo(1)} />
+				<HomePageParallaxLayer onClick={() => parallax.current.scrollTo(1)}
+				 style={{
+					position: 'absolute'}}/>
 
 				<ParallaxLayer
 					offset={1}
