@@ -1,4 +1,4 @@
-import React, { CSSProperties} from 'react';
+import React, { CSSProperties } from 'react';
 
 interface NavbarProps {
 	orientation?: 'horizontal' | 'vertical';
@@ -17,11 +17,29 @@ const Navbar: React.FC<NavbarProps> = ({
 		left: position.left || '0px',
 		color: 'black',
 		padding: '5px',
-		fontSize: '1.5em',
-		writingMode: orientation === 'vertical' ? 'vertical-lr' : 'horizontal-tb',
+		fontSize: '1em',
+		writingMode: orientation === 'horizontal' ? 'horizontal-tb' : 'vertical-lr',
 	};
 
-	return <nav style={style}>{items.join(' | ')}</nav>;
+	const mobileStyle: CSSProperties = {
+		...style,
+		writingMode: 'horizontal-tb',
+	};
+
+	return (
+		<>
+			<style jsx>
+				{`
+					@media screen and (max-width: 600px) {
+						nav {
+							writing-mode: ${mobileStyle.writingMode};
+						}
+					}
+				`}
+			</style>
+			<nav style={style}>{items.join(' | ')}</nav>
+		</>
+	);
 };
 
 export default Navbar;

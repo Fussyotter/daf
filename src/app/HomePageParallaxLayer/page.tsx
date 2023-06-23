@@ -6,6 +6,7 @@ import Navbar from '../Nav/page';
 import AnimatedText from '../AnimatedText/page';
 import AnimatedParagraph from '../AnimatedParagraph/page';
 import AnimatedImage from '../AnimatedImage/page';
+import HorizontalLine from '../Branch/page';
 
 interface HomePageParallaxLayerProps {
 	parallax: RefObject<any>;
@@ -24,7 +25,14 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				alignItems: 'flex-start',
 				justifyContent: 'center',
 			}}>
-			<ScrollHint onClick={() => parallax.current.scrollTo(1)} nextPageInfo={['Services','Clients']} />
+			<ScrollHint
+				onClick={() => parallax.current.scrollTo(1)}
+				nextPageInfo={['Services', 'Clients']}
+			/>
+			<HorizontalLine top='60%' direction='left' delay={2} width='300px' />
+
+			<HorizontalLine top='70%' direction='right' delay={2} width='500px' />
+
 			<Navbar
 				orientation='horizontal'
 				position={{ top: '0px', left: '10px' }}
@@ -43,6 +51,8 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 					display: 'flex',
 					flexDirection: 'row',
 					justifyContent: 'space-between',
+					zIndex: -1,
+					width: '100%',
 				}}>
 				<div
 					style={{
@@ -51,9 +61,8 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 						alignItems: 'flex-start',
 						justifyContent: 'flex-start',
 						flex: 1,
-						borderBottom: '1px dashed black',
-						marginRight: '150px',
-						width: '100%',
+						// marginRight: '150px',
+						width: '50%',
 						height: '100%',
 					}}>
 					<AnimatedText text='Dear' delay={1000} />
@@ -67,14 +76,25 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 						flexDirection: 'column',
 						alignItems: 'stretch',
 						justifyContent: 'space-between',
-						width: '100%',
+						width: '50%',
 						flex: 1,
 					}}>
 					<AnimatedParagraph
-						text='I started ‘Dear Actor Friends’ as a way of helping other
-						actors. I love connecting with each of you and building my actor
-						community. If I can help you in any way shape or form, then this
-						crazy ride of a career I’ve been on, has truly been worth it.'
+						text='I specialize in headshot styling, career consultations and audition
+						coaching. I have had clients book roles on major network television
+						shows, sign with new representation and have the best headshot
+						sessions of their lives after meeting with me.'
+						style={{
+							// marginRight: '2px',
+							color: 'black',
+							fontSize: '1em',
+							boxSizing: 'border-box',
+						}}
+						delay={2300}
+					/>
+
+					<AnimatedParagraph
+						text=' Through headshot styling, career consultations, and audition coaching, I aim to aid your journey. Your breakthrough is the reward for my voyage. '
 						style={{
 							marginRight: '2px',
 							color: 'black',
@@ -84,16 +104,8 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 						}}
 						delay={2300}
 					/>
-						<AnimatedImage
-							src={'placeholder1.jpg'}
-							delay={2300}
-							style={{ width: '600px' }}
-						/>
 					<AnimatedParagraph
-						text='I specialize in headshot styling, career consultations and audition
-						coaching. I have had clients book roles on major network television
-						shows, sign with new representation and have the best headshot
-						sessions of their lives after meeting with me.'
+						text=''
 						style={{
 							marginRight: '2px',
 							color: 'black',
