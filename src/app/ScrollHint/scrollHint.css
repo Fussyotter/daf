@@ -1,0 +1,44 @@
+/* ScrollHint.css */
+
+.line {
+	position: absolute;
+	left: 50%;
+	bottom: 10%;
+	width: 1px;
+	background: black;
+	height: 0;
+	animation: drawLine 2s forwards;
+}
+
+@keyframes drawLine {
+	from {
+		height: 0%;
+	}
+	to {
+		height: 100%;
+	}
+}
+.nextPageInfoTop {
+	position: absolute;
+	bottom: 8%;
+	right: 10px;
+      white-space: nowrap;
+      font-size: .8em;
+
+}
+
+.nextPageInfoBottom {
+	position: absolute;
+	bottom: 2%;
+	left: 10px;
+     white-space: nowrap;
+  direction: rtl;
+  font-size: .8em;
+}
+
+.chevron {
+	position: absolute;
+	bottom: -30px;
+	left: -15px;
+	cursor: 'pointer';
+}

@@ -1,91 +1,65 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import { useSpring, animated } from 'react-spring';
+import ScrollHint from '../ScrollHint/page';
+import Navbar from '../Nav/page';
+import AnimatedText from '../AnimatedText/page';
+import AnimatedParagraph from '../AnimatedParagraph/page';
+import AnimatedImage from '../AnimatedImage/page';
 
+interface HomePageParallaxLayerProps {
+	parallax: RefObject<any>;
+}
 
-const HomePageParallaxLayer: React.FC<{ onClick: () => void }> = ({
-	onClick,
+const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
+	parallax,
 }) => {
-		const [borderAnimation, setBorderAnimation] = React.useState(false);
-		React.useEffect(() => {
-			const timer = setTimeout(() => {
-				setBorderAnimation(true);
-			}, 2000);
-			return () => clearTimeout(timer);
-		}, []);
-	const fadeInImage = useSpring({
-		from: { opacity: 0 },
-		to: { opacity: 1 },
-		delay: 2500,
-		config: {
-			duration: 1000,
-		},
-	});
-	const slideInText = useSpring({
-		from: { transform: 'translate3d(0,10%,0)' , opacity: 0},
-		to: { transform: 'translate3d(0,0,0)', opacity: 1 },
-		delay: 1000,
-		config: {
-			duration: 600,
-		},
-	});
-		const slideInText2 = useSpring({
-			from: { transform: 'translate3d(0,10%,0)', opacity: 0 },
-			to: { transform: 'translate3d(0,0,0)', opacity: 1 },
-			delay: 1500,
-			config: {
-				duration: 600,
-			},
-		});
-			const slideInText3 = useSpring({
-				from: { transform: 'translate3d(0,10%,0)', opacity: 0 },
-				to: { transform: 'translate3d(0,0,0)', opacity: 1 },
-				delay: 2000,
-				config: {
-					duration: 600,
-				},
-			});
-
 	return (
 		<ParallaxLayer
-			offset={0.051}
+			offset={0}
 			speed={0.3}
-			onClick={onClick}
 			style={{
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'flex-start',
 				justifyContent: 'center',
-				padding: '10%',
 			}}>
+			<ScrollHint onClick={() => parallax.current.scrollTo(1)} nextPageInfo={['Services','Clients']} />
+			<Navbar
+				orientation='horizontal'
+				position={{ top: '0px', left: '10px' }}
+				items={['About', 'Contact', 'Services', 'New Client Form']}
+			/>
+			<Navbar
+				orientation='vertical'
+				position={{ top: '50px', left: '5px' }}
+				items={['Home', 'Testimonials', 'Clients']}
+			/>
 			<div
 				style={{
 					position: 'absolute',
-					left: '80px', // push right by 20px
-					top: '20px', // push down by 20px
+					left: '80px',
+					top: '40px',
 					display: 'flex',
 					flexDirection: 'row',
 					justifyContent: 'space-between',
 				}}>
-				<div 			className={`animatedBorder ${borderAnimation ? 'animated' : ''}`}
-
+				<div
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'flex-start',
 						justifyContent: 'flex-start',
 						flex: 1,
-						borderRight: '1px dashed black',
 						borderBottom: '1px dashed black',
 						marginRight: '150px',
 						width: '100%',
+						height: '100%',
 					}}>
-					<animated.div style={{ ...slideInText, fontSize: '5em', color: 'black' }}>Dear</animated.div>
-					<animated.div style={{ ...slideInText2, fontSize: '5em', color: 'black' }}>Actor</animated.div>
-					<animated.div style={{ ...slideInText3, fontSize: '5em', color: 'black' }}>Friends,</animated.div>
-					<animated.p style={{ ...slideInText, fontSize: '2em', color: 'black', marginTop: '2em' }}>
-						With Alison Yates.
-					</animated.p>
+					<AnimatedText text='Dear' delay={1000} />
+					<AnimatedText text='Actor' delay={1500} />
+					<AnimatedText text='Friends' delay={2000} />
+					<AnimatedParagraph text='With Alison Yates' delay={2300} />
 				</div>
 				<div
 					style={{
@@ -96,47 +70,39 @@ const HomePageParallaxLayer: React.FC<{ onClick: () => void }> = ({
 						width: '100%',
 						flex: 1,
 					}}>
-					<animated.div
-						style={{
-							...fadeInImage,
-							flex: 1,
-						}}>
-						<img
-							src='placeholder1.jpg'
-							alt='Your Image'
-							style={{ width: '600px', height: '100%' }}
-						/>
-					</animated.div>
-					<animated.div
-						style={{
-							...slideInText3,
-							marginRight: '2px',
-							color: 'black',
-							// background: 'white',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}>
-						I specialize in headshot styling, career consultations and audition
-						coaching. I have had clients book roles on major network television
-						shows, sign with new representation and have the best headshot
-						sessions of their lives after meeting with me.
-						<br />
-					</animated.div>
-				
-					{/* <animated.div
-						style={{
-							flex: 1,
-							marginRight: '2px',
-							color: 'black',
-							background: 'white',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}>
-						<br />I started ‘Dear Actor Friends’ as a way of helping other
+					<AnimatedParagraph
+						text='I started ‘Dear Actor Friends’ as a way of helping other
 						actors. I love connecting with each of you and building my actor
 						community. If I can help you in any way shape or form, then this
-						crazy ride of a career I’ve been on, has truly been worth it.
-					</animated.div> */}
+						crazy ride of a career I’ve been on, has truly been worth it.'
+						style={{
+							marginRight: '2px',
+							color: 'black',
+							fontSize: '1em',
+							padding: '20px',
+							boxSizing: 'border-box',
+						}}
+						delay={2300}
+					/>
+						<AnimatedImage
+							src={'placeholder1.jpg'}
+							delay={2300}
+							style={{ width: '600px' }}
+						/>
+					<AnimatedParagraph
+						text='I specialize in headshot styling, career consultations and audition
+						coaching. I have had clients book roles on major network television
+						shows, sign with new representation and have the best headshot
+						sessions of their lives after meeting with me.'
+						style={{
+							marginRight: '2px',
+							color: 'black',
+							fontSize: '1em',
+							padding: '20px',
+							boxSizing: 'border-box',
+						}}
+						delay={2300}
+					/>
 				</div>
 			</div>
 		</ParallaxLayer>
