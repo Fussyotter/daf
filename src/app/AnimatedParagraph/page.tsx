@@ -7,19 +7,19 @@ interface AnimatedParagraphProps {
     style?: CSSProperties;
 }
 
-const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ text, delay = 1000, style={} }) => {
+const AnimatedParagraph: React.FC<AnimatedParagraphProps> = ({ text, delay = 2000, style={} }) => {
 	const slideInText = useSpring({
-		from: { transform: 'translate3d(0,10%,0)', opacity: 0 },
+		from: { transform: 'translate3d(0,0,0)', opacity: 0 },
 		to: { transform: 'translate3d(0,0,0)', opacity: 1 },
 		delay: delay,
 		config: {
-			duration: 600,
+			duration: 400,
 		},
 	});
     const defaultStyle: CSSProperties = {
-        fontSize: '1.5em',
+        fontSize: '1em',
         color: 'black',
-        marginTop: '2em',};
+        };
       const mergedStyle = { ...defaultStyle, ...slideInText, ...style };
 
 

@@ -17,8 +17,9 @@ const AnimatedImage: React.FC<AnimatedImageProps> = ({ src,alt='', delay = 1000,
         },
     });
   const defaultStyle: CSSProperties = {
-		width: '100%', // this can be adjusted as needed
-		height: 'auto', // this can be adjusted as needed
+		// width: '100%', 
+		height: 'auto',
+        // margin: 0,
 	};
 
       const mergedStyle = { ...defaultStyle, ...fadeInImage, ...style };

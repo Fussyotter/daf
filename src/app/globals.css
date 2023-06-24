@@ -40,6 +40,7 @@
 }
 * {
  /* border: #b1000010 solid 2px; */
+ 
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -86,11 +87,14 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  
+
+  
 }
 
 body {
       background-color: rgb(245, 245, 238); /* Or any color you want */
-
+      
 }
 
 a {

@@ -1,5 +1,16 @@
+
+.line-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
 .horizontal-line {
-    position: absolute;
     height: 1px;
     background: black;
+}
+
+.end-component {
+  position: absolute;
+
 }

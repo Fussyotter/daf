@@ -7,7 +7,7 @@ import AnimatedText from '../AnimatedText/page';
 import AnimatedParagraph from '../AnimatedParagraph/page';
 import AnimatedImage from '../AnimatedImage/page';
 import HorizontalLine from '../Branch/page';
-
+import SpeedCarousel from '../SpeedCarousel/page';
 interface HomePageParallaxLayerProps {
 	parallax: RefObject<any>;
 }
@@ -29,9 +29,101 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				onClick={() => parallax.current.scrollTo(1)}
 				nextPageInfo={['Services', 'Clients']}
 			/>
-			<HorizontalLine top='60%' direction='left' delay={2} width='300px' />
+			<HorizontalLine
+				top='10%'
+				direction='right'
+				delay={2}
+				width='100px'
+				EndComponent={
+					<AnimatedParagraph
+						text='Helping other actors act more. '
+						style={{
+							color: 'black',
+							fontSize: '.8em',
+							boxSizing: 'border-box',
+							width: '200px',
+							height: '100px',
+						}}
+						delay={3000}
+					/>
+				}
+			/>
+{/* 
+			<HorizontalLine
+				top='36%'
+				direction='right'
+				delay={2}
+				width='280px'
+				EndComponent={
+					<AnimatedParagraph
+						text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+						style={{
+							color: 'black',
+							fontSize: '.8em',
+							width: '200px',
+							height: '100px',
+						}}
+						delay={3000}
+					/>
+				}
+			/> */}
+			<HorizontalLine
+				top='75%'
+				direction='left'
+				delay={2}
+				width='300px'
+				EndComponent={
+					<AnimatedImage
+						src='/al1.jpeg'
+						alt='placeholder'
+						delay={3000}
+						style={{
+							height: '300px',
+							borderRadius: '10%',
+							boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
+			
+						}}
+					/>
+				}
+			/>
+			<HorizontalLine
+				top='60%'
+				direction='left'
+				delay={2}
+				width='200px'
+				EndComponent={
+					<AnimatedParagraph
+						text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+						style={{
+							boxSizing: 'border-box',
+							fontSize: '.8em',
+							width: '200px',
+							height: '100px',
+						}}
+						delay={3000}
+					/>
+				}
+			/>
 
-			<HorizontalLine top='70%' direction='right' delay={2} width='500px' />
+			<HorizontalLine
+				top='70%'
+				direction='right'
+				delay={2}
+				width='400px'
+				EndComponent={
+					<AnimatedParagraph
+						text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+						style={{
+							color: 'black',
+							boxSizing: 'border-box',
+							fontSize: '.8em',
+							width: '200px',
+							height: '100px',
+						}}
+						delay={3000}
+					/>
+				}
+			/>
 
 			<Navbar
 				orientation='horizontal'
@@ -69,52 +161,6 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 					<AnimatedText text='Actor' delay={1500} />
 					<AnimatedText text='Friends' delay={2000} />
 					<AnimatedParagraph text='With Alison Yates' delay={2300} />
-				</div>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'stretch',
-						justifyContent: 'space-between',
-						width: '50%',
-						flex: 1,
-					}}>
-					<AnimatedParagraph
-						text='I specialize in headshot styling, career consultations and audition
-						coaching. I have had clients book roles on major network television
-						shows, sign with new representation and have the best headshot
-						sessions of their lives after meeting with me.'
-						style={{
-							// marginRight: '2px',
-							color: 'black',
-							fontSize: '1em',
-							boxSizing: 'border-box',
-						}}
-						delay={2300}
-					/>
-
-					<AnimatedParagraph
-						text=' Through headshot styling, career consultations, and audition coaching, I aim to aid your journey. Your breakthrough is the reward for my voyage. '
-						style={{
-							marginRight: '2px',
-							color: 'black',
-							fontSize: '1em',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}
-						delay={2300}
-					/>
-					<AnimatedParagraph
-						text=''
-						style={{
-							marginRight: '2px',
-							color: 'black',
-							fontSize: '1em',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}
-						delay={2300}
-					/>
 				</div>
 			</div>
 		</ParallaxLayer>
