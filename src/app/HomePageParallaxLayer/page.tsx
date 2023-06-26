@@ -29,7 +29,7 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				style={{
 					position: 'absolute',
 					left: '50%',
-					transform: 'translateX(-50%)',
+					// transform: 'translateX(-50%)',
 					top: '40px',
 					display: 'flex',
 					flexDirection: 'column',
@@ -42,7 +42,7 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				<AnimatedText text='Friends' delay={2000} />
 				<AnimatedParagraph text='With Alison Yates' delay={2300} />
 			</div>
-			<Navbar
+			{/* <Navbar
 				orientation='horizontal'
 				position={{ top: '0px' }}
 				items={[
@@ -54,13 +54,23 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 					'Testimonials',
 					'Clients',
 				]}
-			/>
+			/> */}
 
-			{/* <ScrollHint
+			<ScrollHint
 				onClick={() => parallax.current.scrollTo(1)}
-				nextPageInfo={['Services', 'Clients']}
+				branchText={[
+					'About',
+					'Contact',
+					'Services',
+					'New Client Form',
+					'Home',
+					'Testimonials',
+					'Clients',
+				]}
+				position={{ left: '2%', bottom: '10%' }}
+				branchSide='right'
 			/>
-			<HorizontalLine
+			{/* <HorizontalLine
 				top='10%'
 				direction='right'
 				delay={2}

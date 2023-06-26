@@ -18,22 +18,21 @@
 		height: 100%;
 	}
 }
-.nextPageInfoTop {
-	position: absolute;
-	bottom: 8%;
-	right: 10px;
-      white-space: nowrap;
-      font-size: .8em;
 
+.branch {
+	position: absolute;
+	white-space: nowrap;
+	font-size: 0.8em;
+	bottom: calc(var(--branch-index) * var(--branch-spacing));
 }
 
-.nextPageInfoBottom {
-	position: absolute;
-	bottom: 2%;
+.branch0 {
+	right: 10px;
+}
+
+.branch1 {
 	left: 10px;
-     white-space: nowrap;
-  direction: rtl;
-  font-size: .8em;
+	direction: rtl;
 }
 
 .chevron {
@@ -41,4 +40,18 @@
 	bottom: -30px;
 	left: -15px;
 	cursor: 'pointer';
+}
+
+.line.right .branch {
+	left: 10px;
+}
+
+.line.right .branch0 {
+	bottom: 8%;
+}
+
+.line.right .branch1 {
+	right: 10px;
+	bottom: 2%;
+	direction: ltr;
 }
