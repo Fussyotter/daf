@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({
 		left: position.left || '0px',
 		color: 'black',
 		padding: '5px',
-		fontSize: '2em',
+		fontSize: '1em',
 		writingMode: orientation === 'horizontal' ? 'horizontal-tb' : 'vertical-lr',
 	};
 

@@ -25,6 +25,36 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				alignItems: 'flex-start',
 				justifyContent: 'center',
 			}}>
+			<Navbar
+				orientation='horizontal'
+				position={{ top: '0px', left: '10%' }}
+				items={[
+					'About',
+					'Contact',
+					'Services',
+					'New Client Form',
+					'Home',
+					'Testimonials',
+					'Clients',
+				]}
+			/>
+
+			<div
+				style={{
+					position: 'absolute',
+					left: '0px',
+					top: '40px',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					zIndex: -1,
+					width: '100%',
+				}}>
+				<AnimatedText text='Dear' delay={1000} />
+				<AnimatedText text='Actor' delay={1500} />
+				<AnimatedText text='Friends' delay={2000} />
+				<AnimatedParagraph text='With Alison Yates' delay={2300} />
+			</div>
 			<ScrollHint
 				onClick={() => parallax.current.scrollTo(1)}
 				nextPageInfo={['Services', 'Clients']}
@@ -48,25 +78,7 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 					/>
 				}
 			/>
-{/* 
-			<HorizontalLine
-				top='36%'
-				direction='right'
-				delay={2}
-				width='280px'
-				EndComponent={
-					<AnimatedParagraph
-						text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-						style={{
-							color: 'black',
-							fontSize: '.8em',
-							width: '200px',
-							height: '100px',
-						}}
-						delay={3000}
-					/>
-				}
-			/> */}
+
 			<HorizontalLine
 				top='75%'
 				direction='left'
@@ -81,7 +93,6 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 							height: '300px',
 							borderRadius: '10%',
 							boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
-			
 						}}
 					/>
 				}
@@ -124,45 +135,6 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 					/>
 				}
 			/>
-
-			<Navbar
-				orientation='horizontal'
-				position={{ top: '0px', left: '10px' }}
-				items={['About', 'Contact', 'Services', 'New Client Form']}
-			/>
-			<Navbar
-				orientation='vertical'
-				position={{ top: '50px', left: '5px' }}
-				items={['Home', 'Testimonials', 'Clients']}
-			/>
-			<div
-				style={{
-					position: 'absolute',
-					left: '80px',
-					top: '40px',
-					display: 'flex',
-					flexDirection: 'row',
-					justifyContent: 'space-between',
-					zIndex: -1,
-					width: '100%',
-				}}>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'flex-start',
-						justifyContent: 'flex-start',
-						flex: 1,
-						// marginRight: '150px',
-						width: '50%',
-						height: '100%',
-					}}>
-					<AnimatedText text='Dear' delay={1000} />
-					<AnimatedText text='Actor' delay={1500} />
-					<AnimatedText text='Friends' delay={2000} />
-					<AnimatedParagraph text='With Alison Yates' delay={2300} />
-				</div>
-			</div>
 		</ParallaxLayer>
 	);
 };
