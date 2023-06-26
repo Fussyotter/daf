@@ -14,7 +14,8 @@ const Navbar: React.FC<NavbarProps> = ({
 	const style: CSSProperties = {
 		position: 'absolute',
 		top: position.top || '0px',
-		left: position.left || '0px',
+		left: '50%', 
+		transform: 'translateX(-50%)', 
 		color: 'black',
 		padding: '5px',
 		fontSize: '1em',

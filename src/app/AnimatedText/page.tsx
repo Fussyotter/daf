@@ -21,7 +21,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text, delay = 1000 , style=
 	const restOfText = text.slice(1);
 
 	return (
-		<div style={{ fontSize: '3em', color: 'black' }}>
+		<div style={{ fontSize: '2em', color: 'black' }}>
 			<span style={{ opacity: 1 }}>{firstLetter}</span>
 			<animated.span style={slideInText}>{restOfText}</animated.span>
 		</div>

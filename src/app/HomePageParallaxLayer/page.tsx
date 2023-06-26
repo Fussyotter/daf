@@ -25,9 +25,26 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				alignItems: 'flex-start',
 				justifyContent: 'center',
 			}}>
+			<div
+				style={{
+					position: 'absolute',
+					left: '50%',
+					transform: 'translateX(-50%)',
+					top: '40px',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					zIndex: -1,
+					alignContent: 'center',
+				}}>
+				<AnimatedText text='Dear' delay={1000} />
+				<AnimatedText text='Actor' delay={1500} />
+				<AnimatedText text='Friends' delay={2000} />
+				<AnimatedParagraph text='With Alison Yates' delay={2300} />
+			</div>
 			<Navbar
 				orientation='horizontal'
-				position={{ top: '0px', left: '10%' }}
+				position={{ top: '0px' }}
 				items={[
 					'About',
 					'Contact',
@@ -39,23 +56,7 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 				]}
 			/>
 
-			<div
-				style={{
-					position: 'absolute',
-					left: '0px',
-					top: '40px',
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-between',
-					zIndex: -1,
-					width: '100%',
-				}}>
-				<AnimatedText text='Dear' delay={1000} />
-				<AnimatedText text='Actor' delay={1500} />
-				<AnimatedText text='Friends' delay={2000} />
-				<AnimatedParagraph text='With Alison Yates' delay={2300} />
-			</div>
-			<ScrollHint
+			{/* <ScrollHint
 				onClick={() => parallax.current.scrollTo(1)}
 				nextPageInfo={['Services', 'Clients']}
 			/>
@@ -134,7 +135,7 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 						delay={3000}
 					/>
 				}
-			/>
+			/> */}
 		</ParallaxLayer>
 	);
 };
