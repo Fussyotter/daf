@@ -1,30 +1,22 @@
 import React, { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
-import { useSpring, animated } from 'react-spring';
-import ScrollHint from '../ScrollHint/page';
-import Navbar from '../Nav/page';
-import AnimatedText from '../AnimatedText/page';
-import AnimatedParagraph from '../AnimatedParagraph/page';
-import AnimatedImage from '../AnimatedImage/page';
-import HorizontalLine from '../Branch/page';
-import SpeedCarousel from '../SpeedCarousel/page';
-import SocialMediaBar from '../Socials/page';
+import ScrollHint from '../components/ScrollHint/page';
+import AnimatedText from '../components/AnimatedText/page';
+import AnimatedParagraph from '../components/AnimatedParagraph/page';
+import SocialMediaBar from '../components/Socials/page';
 interface HomePageParallaxLayerProps {
 	parallax: RefObject<any>;
+	offset: number;
 }
-const images = [
-	'/al1.jpeg',
-	'/al2.jpeg',
-	'/al3.jpeg',
-	'/al5.jpeg',
-];
+
 
 const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 	parallax,
+	offset,
 }) => {
 return (
 	<ParallaxLayer
-		offset={0}
+		offset={offset}
 		speed={0.3}
 		style={{
 			display: 'flex',
@@ -42,6 +34,7 @@ return (
 				justifyContent: 'space-between',
 				zIndex: -1,
 			}}>
+				
 			<div style={{ position: 'absolute', left: '5%', top: '5%' }}>
 				<SocialMediaBar />
 			</div>
@@ -50,9 +43,9 @@ return (
 					position: 'absolute',
 					left: '50%',
 					transform: 'translate(-50%, 0)',
-					background: 'your-color-or-image',
 					padding: '10px',
 					borderRadius: '5px',
+					boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
 				}}>
 				<AnimatedText text='Dear' delay={1000} />
 				<AnimatedText text='Actor' delay={1500} />
@@ -85,6 +78,8 @@ return (
 				width: '100%',
 				display: 'flex',
 				justifyContent: 'center',
+				backgroundColor: 'rgba(0,0,0,0.5)',
+				boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', 
 			}}>
 			<div
 				style={{
@@ -105,7 +100,7 @@ return (
 				/>
 				<div
 					style={{
-						marginLeft: '-15%', // offset from the image
+						marginLeft: '-15%', 
 					}}>
 					<AnimatedParagraph
 						text="LET'S ACT MORE. SHALL WE?"
@@ -134,33 +129,15 @@ return (
 			position={{ left: '2%', bottom: '10%' }}
 			branchSide='right'
 		/>
+
 	</ParallaxLayer>
 );
 };
 
 export default HomePageParallaxLayer;
 
-{/* <HorizontalLine
-	top='10%'
-	direction='right'
-	delay={2}
-	width='100px'
-	EndComponent={
-		<AnimatedParagraph
-			text='Helping other actors act more. '
-			style={{
-				color: 'black',
-				fontSize: '.8em',
-				boxSizing: 'border-box',
-				width: '200px',
-				height: '100px',
-			}}
-			delay={3000}
-		/>
-	}
-/>
 
-<HorizontalLine
+{/* <HorizontalLine
 	top='75%'
 	direction='left'
 	delay={2}
@@ -215,4 +192,4 @@ export default HomePageParallaxLayer;
 			delay={3000}
 		/>
 	}
-/> */}
+/>  */}
