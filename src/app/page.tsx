@@ -16,39 +16,7 @@ export default function App() {
 	return (
 		<div style={{ width: '100%', height: '100%', background: '#3E4A89' }}>
 			<Parallax ref={parallax} pages={3}>
-				<ParallaxLayer
-					offset={0}
-					speed={0}
-					onClick={() => parallax.current.scrollTo(1)}
-					style={{
-						position: 'absolute',
-						top: 0,
-						left: 0,
-						right: 0,
-						zIndex: 1,
-						display: 'flex',
-						flexDirection: 'column',
-					}}>
-					<h1
-						style={{
-							margin: 0,
-							color: 'black',
-							padding: '15px',
-							fontSize: '1.5em',
-						}}>
-						About | Contact | Instagram | New Client Form
-					</h1>
-					<h1
-						style={{
-							margin: 0,
-							color: 'black',
-							padding: '15px',
-							fontSize: '1.5em',
-							writingMode: 'vertical-lr',
-						}}>
-						Home | Services | Clients | Testimonials
-					</h1>
-				</ParallaxLayer>
+				<HomePageParallaxLayer parallax={parallax} />
 
 				<ParallaxLayer
 					offset={1}
@@ -137,9 +105,7 @@ export default function App() {
 					}}
 				/>
 
-				<HomePageParallaxLayer onClick={() => parallax.current.scrollTo(1)}
-				 style={{
-					position: 'absolute'}}/>
+				{/* <HomePageParallaxLayer parallax={parallax}/> */}
 
 				<ParallaxLayer
 					offset={1}

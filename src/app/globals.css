@@ -1,5 +1,5 @@
 :root {
-  --max-width: 1100px;
+  /* --max-width: 1100px; */
   --border-radius: 12px;
   --font-mono: "CenturySchoolbookBT-Monospace", "Courier New", Courier,
     monospace;
@@ -39,7 +39,8 @@
   --card-border-rgb: 131, 134, 135;
 }
 * {
- /* border: #b1000010 solid 5px; */
+ /* border: #b1000010 solid 2px; */
+ 
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -81,16 +82,20 @@
 }
 .CenturySchoolbookBT-Monospace {
   font-family: 'CenturySchoolbookBT-Monospace', monospace;
+  
 }
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  /* max-width: 100vw; */
+  /* overflow-x: hidden; */
+  
+
+  
 }
 
 body {
-      background-color: rgb(245, 245, 238); /* Or any color you want */
-
+      background-color: #e6b795; /* Or any color you want */
+      
 }
 
 a {

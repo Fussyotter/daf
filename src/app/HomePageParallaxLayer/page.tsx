@@ -1,119 +1,218 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import { useSpring, animated } from 'react-spring';
+import ScrollHint from '../ScrollHint/page';
+import Navbar from '../Nav/page';
+import AnimatedText from '../AnimatedText/page';
+import AnimatedParagraph from '../AnimatedParagraph/page';
+import AnimatedImage from '../AnimatedImage/page';
+import HorizontalLine from '../Branch/page';
+import SpeedCarousel from '../SpeedCarousel/page';
+import SocialMediaBar from '../Socials/page';
+interface HomePageParallaxLayerProps {
+	parallax: RefObject<any>;
+}
+const images = [
+	'/al1.jpeg',
+	'/al2.jpeg',
+	'/al3.jpeg',
+	'/al5.jpeg',
+];
 
-
-const HomePageParallaxLayer: React.FC<{ onClick: () => void }> = ({
-	onClick,
+const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
+	parallax,
 }) => {
-const fadeIn1 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 500,
-});
-const fadeIn2 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 1000,
-});
-const fadeIn3 = useSpring({
-	from: { opacity: 0 },
-	to: { opacity: 1 },
-	delay: 1500,
-});
-
-	return (
-		<ParallaxLayer
-			offset={0.051}
-			speed={0.3}
-			onClick={onClick}
+return (
+	<ParallaxLayer
+		offset={0}
+		speed={0.3}
+		style={{
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'flex-start',
+			justifyContent: 'center',
+		}}>
+		<div
 			style={{
+				position: 'absolute',
+				width: '100%',
+				height: '100%',
 				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'flex-start',
-				justifyContent: 'center',
-				padding: '10%',
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				zIndex: -1,
 			}}>
+			<div style={{ position: 'absolute', left: '5%', top: '5%' }}>
+				<SocialMediaBar />
+			</div>
 			<div
 				style={{
 					position: 'absolute',
-					left: '80px', // push right by 20px
-					top: '20px', // push down by 20px
+					left: '50%',
+					transform: 'translate(-50%, 0)',
+					background: 'your-color-or-image',
+					padding: '10px',
+					borderRadius: '5px',
+				}}>
+				<AnimatedText text='Dear' delay={1000} />
+				<AnimatedText text='Actor' delay={1500} />
+				<AnimatedText text='Friends' delay={2000} />
+				<AnimatedParagraph text='With Alison Yates' delay={2300} />
+			</div>
+			<div style={{ position: 'absolute', right: '5%', top: '5%' }}>
+				<button className='start-now-button'>Start Now</button>
+			</div>
+		</div>
+		<div
+			style={{
+				position: 'absolute',
+				top: '25%',
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'center',
+			}}>
+			<AnimatedParagraph
+				text='A working actor helping other actors work more. 
+'
+				delay={3000}
+				style={{ fontSize: '.9em' }}
+			/>
+		</div>
+		<div
+			style={{
+				position: 'absolute',
+				top: '30%',
+				width: '100%',
+				display: 'flex',
+				justifyContent: 'center',
+			}}>
+			<div
+				style={{
 					display: 'flex',
 					flexDirection: 'row',
-					justifyContent: 'space-between',
+					alignItems: 'center',
+					justifyContent: 'center',
+					position: 'relative',
 				}}>
+				<img
+					src='/al1.jpeg'
+					alt=''
+					style={{
+						width: '50%',
+						height: '60vh',
+						objectFit: 'cover',
+					}}
+				/>
 				<div
 					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'flex-start',
-						justifyContent: 'flex-start',
-						flex: 1,
-						borderRight: '1px dashed black',
-						borderBottom: '1px dashed black',
-						marginRight: '150px',
-						width: '100%',
+						marginLeft: '-15%', // offset from the image
 					}}>
-					<div style={{ fontSize: '5em', color: 'black' }}>Dear</div>
-					<div style={{ fontSize: '5em', color: 'black' }}>Actor</div>
-					<div style={{ fontSize: '5em', color: 'black', }}>Friends</div>
-					<p style={{ fontSize: '2em', color: 'black', marginTop: '2em'}}>
-						With Alison Yates
-					</p>
-				</div>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'stretch',
-						justifyContent: 'space-between',
-						width: '100%',
-						flex: 1,
-											}}>
-					<animated.div
+					<AnimatedParagraph
+						text="LET'S ACT MORE. SHALL WE?"
+						delay={3000}
 						style={{
-							...fadeIn1,
-							marginRight: '2px',
-							color: 'black',
-							background: 'white',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}>
-						I specialize in headshot styling, career consultations and audition
-						coaching. I have had clients book roles on major network television
-						shows, sign with new representation and have the best headshot
-						sessions of their lives after meeting with me.
-						<br />
-				
-					</animated.div>
-					<animated.div style={{ ...fadeIn2,flex: 1 }}>
-						<img
-							src='placeholder1.jpg'
-							alt='Your Image'
-							style={{ width: '600px', height: '100%' }}
-						/>
-					</animated.div>
-					<animated.div
-						style={{
-							...fadeIn3,
-							flex: 1,
-							marginRight: '2px',
-							color: 'black',
-							background: 'white',
-							padding: '20px',
-							boxSizing: 'border-box',
-						}}>
-					
-						<br />I started ‘Dear Actor Friends’ as a way of helping other
-						actors. I love connecting with each of you and building my actor
-						community. If I can help you in any way shape or form, then this
-						crazy ride of a career I’ve been on, has truly been worth it.
-					</animated.div>
+							color: 'white',
+							fontSize: '2.5em',
+							textAlign: 'left',
+						}}
+					/>
 				</div>
 			</div>
-		</ParallaxLayer>
-	);
+		</div>
+
+		<ScrollHint
+			onClick={() => parallax.current.scrollTo(1)}
+			branchText={[
+				'About',
+				'Contact',
+				'Services',
+				'New Client Form',
+				'Home',
+				'Testimonials',
+				'Clients',
+			]}
+			position={{ left: '2%', bottom: '10%' }}
+			branchSide='right'
+		/>
+	</ParallaxLayer>
+);
 };
 
 export default HomePageParallaxLayer;
+
+{/* <HorizontalLine
+	top='10%'
+	direction='right'
+	delay={2}
+	width='100px'
+	EndComponent={
+		<AnimatedParagraph
+			text='Helping other actors act more. '
+			style={{
+				color: 'black',
+				fontSize: '.8em',
+				boxSizing: 'border-box',
+				width: '200px',
+				height: '100px',
+			}}
+			delay={3000}
+		/>
+	}
+/>
+
+<HorizontalLine
+	top='75%'
+	direction='left'
+	delay={2}
+	width='300px'
+	EndComponent={
+		<AnimatedImage
+			src='/al1.jpeg'
+			alt='placeholder'
+			delay={3000}
+			style={{
+				height: '300px',
+				borderRadius: '10%',
+				boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
+			}}
+		/>
+	}
+/>
+<HorizontalLine
+	top='60%'
+	direction='left'
+	delay={2}
+	width='200px'
+	EndComponent={
+		<AnimatedParagraph
+			text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+			style={{
+				boxSizing: 'border-box',
+				fontSize: '.8em',
+				width: '200px',
+				height: '100px',
+			}}
+			delay={3000}
+		/>
+	}
+/>
+
+<HorizontalLine
+	top='70%'
+	direction='right'
+	delay={2}
+	width='400px'
+	EndComponent={
+		<AnimatedParagraph
+			text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+			style={{
+				color: 'black',
+				boxSizing: 'border-box',
+				fontSize: '.8em',
+				width: '200px',
+				height: '100px',
+			}}
+			delay={3000}
+		/>
+	}
+/> */}
