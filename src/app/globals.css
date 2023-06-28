@@ -82,6 +82,7 @@
 }
 .CenturySchoolbookBT-Monospace {
   font-family: 'CenturySchoolbookBT-Monospace', monospace;
+  
 }
 html,
 body {
@@ -93,7 +94,7 @@ body {
 }
 
 body {
-      background-color: rgb(245, 245, 238); /* Or any color you want */
+      background-color: #e6b795; /* Or any color you want */
       
 }
 
