@@ -28,6 +28,7 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 		width: '1px',
 		background: 'black',
 		...position,
+		zIndex: 10,
 	};
 
 	let endComponentStyle: React.CSSProperties = {

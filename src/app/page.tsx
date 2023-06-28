@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax';
 import HomePageParallaxLayer from './HomePageParallaxLayer/page';
+import ServicesLayer from './ServicesLayer/page';
 
 // Little helpers ...
 const url = (name: string, wrap = false) =>
@@ -16,37 +17,14 @@ export default function App() {
 	return (
 		<div style={{ width: '100%', height: '100%', background: '#3E4A89' }}>
 			<Parallax ref={parallax} pages={3}>
-				<HomePageParallaxLayer parallax={parallax} />
+				<HomePageParallaxLayer parallax={parallax} offset={0} />
+				<ServicesLayer parallax={parallax} offset={1} />
+				<ServicesLayer parallax={parallax} offset={2} />
 
 				<ParallaxLayer
 					offset={1}
-					speed={1}
-					style={{ backgroundColor: '#3E4A89' }}
-				/>
-
-				<ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '20%', marginLeft: '55%' }}
-					/>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '10%', marginLeft: '15%' }}
-					/>
-				</ParallaxLayer>
-
-				<ParallaxLayer offset={1.75} speed={0.5} style={{ opacity: 0.1 }}>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '20%', marginLeft: '70%' }}
-					/>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '20%', marginLeft: '40%' }}
-					/>
-				</ParallaxLayer>
-
-				<ParallaxLayer offset={1} speed={0.2} style={{ opacity: 0.2 }}>
+					speed={0.2}
+					style={{ opacity: 0.2, zIndex: -5 }}>
 					<img
 						src={url('cloud')}
 						style={{ display: 'block', width: '10%', marginLeft: '10%' }}
@@ -57,7 +35,10 @@ export default function App() {
 					/>
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={1.6} speed={-0.1} style={{ opacity: 0.4 }}>
+				<ParallaxLayer
+					offset={1.6}
+					speed={-0.1}
+					style={{ opacity: 0.4, zIndex: -5 }}>
 					<img
 						src={url('cloud')}
 						style={{ display: 'block', width: '20%', marginLeft: '60%' }}
@@ -72,7 +53,7 @@ export default function App() {
 					/>
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
+				{/* <ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
 					<img
 						src={url('cloud')}
 						style={{ display: 'block', width: '20%', marginLeft: '5%' }}
@@ -105,19 +86,6 @@ export default function App() {
 					}}
 				/>
 
-				{/* <HomePageParallaxLayer parallax={parallax}/> */}
-
-				<ParallaxLayer
-					offset={1}
-					speed={0.1}
-					onClick={() => parallax.current.scrollTo(2)}
-					style={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}>
-					<img src={url('bash')} style={{ width: '40%' }} />
-				</ParallaxLayer>
 
 				<ParallaxLayer
 					offset={2}
@@ -127,9 +95,9 @@ export default function App() {
 						alignItems: 'center',
 						justifyContent: 'center',
 					}}
-					onClick={() => parallax.current.scrollTo(0)}>
+					>
 					<img src={url('clients-main')} style={{ width: '40%' }} />
-				</ParallaxLayer>
+				</ParallaxLayer> */}
 			</Parallax>
 		</div>
 	);
