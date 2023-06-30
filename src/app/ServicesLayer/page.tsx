@@ -2,8 +2,10 @@ import React, { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import ScrollHint from '../components/ScrollHint/page';
 import AnimatedText from '../components/AnimatedText/page';
+import Rectangles from '../components/Rectangles/page';
+
 import AnimatedParagraph from '../components/AnimatedParagraph/page';
-import SocialMediaBar from '../components/Socials/page';
+
 interface ServicesLayerProps {
 	parallax: RefObject<any>;
     offset:number;
@@ -37,7 +39,7 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax,offset, }) => {
 						transform: 'translate(-50%, 0)',
 						padding: '10px',
 						borderRadius: '5px',
-						boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
+						boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
 					}}>
 					<AnimatedParagraph text='Services' delay={2300} />
 				</div>
@@ -45,20 +47,31 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax,offset, }) => {
 			<div
 				style={{
 					position: 'absolute',
-					top: '25%',
-					width: '100%',
+					left: '10%',
+					top: '10%',
+					width: '80%',
 					display: 'flex',
-					justifyContent: 'center',
+					flexDirection: 'column',
 				}}>
 				<AnimatedParagraph
-					text='A working actor helping other actors work more. 
-'
-					delay={3000}
-					style={{ fontSize: '.9em' }}
+					text='I specialize in headshot styling, career consultations and audition coaching. I have had clients book roles on major network television shows, sign with new representation and have the best headshot sessions of their lives after meeting with me.'
+					delay={1000}
+					style={{ fontSize: '1em' }}
 				/>
+				<AnimatedParagraph
+					text='I started ‘Dear Actor Friends’ as a way of helping other actors. I love connecting with each of you and building my actor community. If I can help you in any way shape or form, then this crazy ride of a career I’ve been on, has truly been worth it. '
+					delay={2300}
+				/>
+				<br />
+				
 			</div>
+			<div style={{marginLeft:'10%',marginTop:'10%', width:'80%', height:'70%'}}>
+
+			<Rectangles/>
+			</div>
+
 			<ScrollHint
-				onClick={() => parallax.current.scrollTo(2)}
+				onClick={() => {}}
 				branchText={[
 					'About',
 					'Contact',
@@ -70,6 +83,7 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax,offset, }) => {
 				]}
 				position={{ left: '2%', bottom: '10%' }}
 				branchSide='right'
+				isMinimized={true}
 			/>
 		</ParallaxLayer>
 	);

@@ -19,7 +19,7 @@ export default function App() {
 			<Parallax ref={parallax} pages={3}>
 				<HomePageParallaxLayer parallax={parallax} offset={0} />
 				<ServicesLayer parallax={parallax} offset={1} />
-				<ServicesLayer parallax={parallax} offset={2} />
+	
 
 				<ParallaxLayer
 					offset={1}
@@ -40,7 +40,7 @@ export default function App() {
 					speed={-0.1}
 					style={{ opacity: 0.4, zIndex: -5 }}>
 					<img
-						src={url('cloud')}
+						src={('blueStarD.svg')}
 						style={{ display: 'block', width: '20%', marginLeft: '60%' }}
 					/>
 					<img

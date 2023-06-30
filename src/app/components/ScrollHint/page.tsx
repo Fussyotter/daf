@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaChevronDown } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaChevronDown, FaBars } from 'react-icons/fa'; // FaBars will represent the minimized state
 import { useSpring, animated } from 'react-spring';
 import './scrollHint.css';
 import { useEffect, useRef } from 'react';
@@ -12,6 +12,7 @@ interface ScrollHintProps {
 	duration?: number;
 	EndComponent?: React.ReactNode;
 	branchSide?: 'left' | 'right';
+	isMinimized?: boolean; // new prop to indicate whether the component should start in a minimized state
 }
 
 const ScrollHint: React.FC<ScrollHintProps> = ({
@@ -22,7 +23,9 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 	duration = 2,
 	EndComponent,
 	branchSide = 'left',
+	isMinimized = false, // default value of the new prop is false, meaning component starts in its normal state
 }) => {
+	const [isExpanded, setIsExpanded] = useState(!isMinimized); // state to control whether component is in its normal or minimized state
 	let lineStyle: React.CSSProperties = {
 		position: 'absolute',
 		width: '1px',
@@ -36,6 +39,15 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 		bottom: 0,
 		cursor: 'pointer',
 	};
+	  const handleEndComponentClick = (
+			event: React.MouseEvent<HTMLDivElement>
+		) => {
+			if (isMinimized) {
+				setIsExpanded(!isExpanded);
+			} else {
+				onClick(event);
+			}
+		};
 	const branchRefs = useRef<(HTMLSpanElement | null)[]>([]);
 	branchRefs.current = branchText.map((_, i) => branchRefs.current[i] ?? null);
 	useEffect(() => {
@@ -60,25 +72,27 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 	const branchSpacing = `${100 / (branchText.length + 1)}%`;
 
 	return (
-		<div
-			className={`line ${branchSide}`}
-			style={lineStyle}
-			onClick={(e) => {
-				e.stopPropagation();
-				onClick(e);
-			}}>
-			{branchText.map((text, index) => (
-				<span
-					className={`branch branch${index}`}
-					style={{ bottom: `${5 + (index / (branchText.length - 1)) * 50}%` }}>
-					{text}
-				</span>
-			))}
-			<animated.div style={{ ...props, ...endComponentStyle }}>
-				{EndComponent || <FaChevronDown className='chevron' size={30} />}
-			</animated.div>
-		</div>
-	);
+		 <div
+      className={`line ${branchSide}`}
+      style={isExpanded ? lineStyle : { ...lineStyle, height: '1px' }} // if component is not expanded, height is set to 1px to show just the button
+      onClick={(e) => {
+        e.stopPropagation();
+        if (isExpanded) onClick(e); // pass through click events to onClick only if component is expanded
+      }}
+    >
+      {isExpanded && branchText.map((text, index) => (
+        <span
+          className={`branch branch${index}`}
+          style={{ bottom: `${5 + (index / (branchText.length - 1)) * 50}%` }}
+        >
+          {text}
+        </span>
+      ))}
+      <animated.div style={{ ...props, ...endComponentStyle }} onClick={handleEndComponentClick}>
+        {EndComponent || (isExpanded ? <FaChevronDown className='chevron' size={30} /> : <FaBars className='chevron' size={30} />)}
+      </animated.div>
+    </div>
+  );
 };
 
 export default ScrollHint;
