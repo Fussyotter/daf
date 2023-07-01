@@ -65,7 +65,7 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax,offset, }) => {
 				<br />
 				
 			</div>
-			<div style={{marginLeft:'10%',marginTop:'10%', width:'80%', height:'70%'}}>
+			<div style={{marginLeft:'10%',marginTop:'10%', width:'80%', height:'100%'}}>
 
 			<Rectangles/>
 			</div>

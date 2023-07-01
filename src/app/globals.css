@@ -94,7 +94,9 @@ body {
 }
 
 body {
-      background-color: #e6b795; 
+  background-image: url('/backgroundTest2.svg');
+    background-size: cover; 
+ 
 }
 
 a {

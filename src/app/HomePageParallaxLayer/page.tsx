@@ -34,7 +34,6 @@ return (
 				justifyContent: 'space-between',
 				zIndex: -1,
 			}}>
-				
 			<div style={{ position: 'absolute', left: '5%', top: '5%' }}>
 				<SocialMediaBar />
 			</div>
@@ -79,7 +78,7 @@ return (
 				display: 'flex',
 				justifyContent: 'center',
 				backgroundColor: 'rgba(0,0,0,0.5)',
-				boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', 
+				boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
 			}}>
 			<div
 				style={{
@@ -100,7 +99,7 @@ return (
 				/>
 				<div
 					style={{
-						marginLeft: '-15%', 
+						marginLeft: '-15%',
 					}}>
 					<AnimatedParagraph
 						text="LET'S ACT MORE. SHALL WE?"
@@ -129,7 +128,6 @@ return (
 			position={{ left: '2%', bottom: '10%' }}
 			branchSide='right'
 		/>
-
 	</ParallaxLayer>
 );
 };
