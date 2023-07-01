@@ -5,12 +5,17 @@ const styles: { [key: string]: React.CSSProperties } = {
 		display: 'flex',
 		width: '100%',
 		height: '100%',
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
 	},
 	leftSection: {
 		position: 'relative',
 		width: '50%',
 		height: '100%',
 		backgroundColor: '#d1cfae',
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+		opacity: 0.9,
+		backgroundImage: 'url("noiseTest1.png")',
+		backgroundBlendMode: 'overlay',
 	},
 	imageContainer: {
 		position: 'absolute',
@@ -20,11 +25,15 @@ const styles: { [key: string]: React.CSSProperties } = {
 		backgroundImage: `url('al5.jpeg')`,
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
 	},
 	rightSection: {
 		width: '50%',
 		height: '100%',
 		position: 'relative',
+		opacity: 0.9,
+		backgroundImage: 'url("noiseTest1.png")',
+		backgroundBlendMode: 'overlay',
 	},
 	layer1: {
 		position: 'absolute',
@@ -33,6 +42,9 @@ const styles: { [key: string]: React.CSSProperties } = {
 		bottom: 0,
 		backgroundColor: '#f2e2d7',
 		zIndex: 1,
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+		backgroundImage: 'url("noiseTest1.png")',
+		backgroundBlendMode: 'overlay',
 	},
 	layer2: {
 		position: 'absolute',
@@ -40,13 +52,19 @@ const styles: { [key: string]: React.CSSProperties } = {
 		height: '90%',
 		backgroundColor: '#ebd4c2',
 		zIndex: 2,
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+		backgroundImage: 'url("noiseTest1.png")',
+		backgroundBlendMode: 'overlay',
 	},
 	layer3: {
 		position: 'absolute',
 		width: '65%',
 		height: '70%',
-		backgroundColor: '#d49e84',
+		backgroundColor: '#DEEEEB',
 		zIndex: 3,
+		boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
+		backgroundImage: 'url("noiseTest1.png")',
+		backgroundBlendMode: 'overlay',
 	},
 	textContainer: {
 		position: 'absolute',
@@ -67,7 +85,8 @@ const Rectangles: React.FC = () => {
 						bottom: '5px',
 						width: '100%',
 						textAlign: 'center',
-						fontSize: '1.5em',
+						fontSize: '6em',
+						opacity: 0.6,
 					}}>
 					HEADSHOT STYLING
 				</p>
@@ -78,7 +97,8 @@ const Rectangles: React.FC = () => {
 						style={{
 							...styles.textContainer,
 							textAlign: 'right',
-							fontSize: '1.5em',
+							fontSize: '3.5em',
+							opacity: 0.6,
 						}}>
 						TESTIMONIALS
 					</div>
@@ -88,7 +108,8 @@ const Rectangles: React.FC = () => {
 						style={{
 							...styles.textContainer,
 							textAlign: 'left',
-							fontSize: '1.5em',
+							fontSize: '3.5em',
+							opacity: 0.6,
 						}}>
 						COACHING
 					</div>
@@ -98,7 +119,8 @@ const Rectangles: React.FC = () => {
 						style={{
 							...styles.textContainer,
 							textAlign: 'left',
-							fontSize: '1.5em',
+							fontSize: '3.5em',
+							opacity: 0.6,
 						}}>
 						CAREER <br />
 						CONSULTATIONS
