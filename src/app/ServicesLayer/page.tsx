@@ -1,10 +1,9 @@
 import React, { RefObject } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import ScrollHint from '../components/ScrollHint/page';
-import AnimatedText from '../components/AnimatedText/page';
 import Rectangles from '../components/Rectangles/page';
-
 import AnimatedParagraph from '../components/AnimatedParagraph/page';
+import styles from './ServicesLayer.module.css';
 
 interface ServicesLayerProps {
 	parallax: RefObject<any>;
@@ -53,21 +52,27 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax,offset, }) => {
 					display: 'flex',
 					flexDirection: 'column',
 				}}>
-				<AnimatedParagraph
-					text='I specialize in headshot styling, career consultations and audition coaching. I have had clients book roles on major network television shows, sign with new representation and have the best headshot sessions of their lives after meeting with me.'
-					delay={1000}
-					style={{ fontSize: '1em' }}
-				/>
-				<AnimatedParagraph
-					text='I started ‘Dear Actor Friends’ as a way of helping other actors. I love connecting with each of you and building my actor community. If I can help you in any way shape or form, then this crazy ride of a career I’ve been on, has truly been worth it. '
-					delay={2300}
-				/>
-				<br />
-				
+				<div className={styles.container}>
+					<AnimatedParagraph
+						text='I specialize in headshot styling, career consultations and audition coaching. I have had clients book roles on major network television shows, sign with new representation and have the best headshot sessions of their lives after meeting with me.'
+						delay={1000}
+						style={{ fontSize: '1em' }}
+					/>
+					<AnimatedParagraph
+						text='I started ‘Dear Actor Friends’ as a way of helping other actors. I love connecting with each of you and building my actor community. If I can help you in any way shape or form, then this crazy ride of a career I’ve been on, has truly been worth it.'
+						delay={2300}
+					/>
+					<br />
+				</div>
 			</div>
-			<div style={{marginLeft:'10%',marginTop:'10%', width:'80%', height:'100%'}}>
-
-			<Rectangles/>
+			<div
+				style={{
+					marginLeft: '9%',
+					marginTop: '10%',
+					width: '80%',
+					height: '100%',
+				}}>
+				<Rectangles />
 			</div>
 
 			<ScrollHint
