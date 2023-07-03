@@ -39,7 +39,7 @@
   --card-border-rgb: 131, 134, 135;
 }
 * {
- /* border: #b1000010 solid 2px; */
+ /* border: red solid 2px; */
  
 }
 @media (prefers-color-scheme: dark) {
