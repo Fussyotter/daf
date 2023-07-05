@@ -19,48 +19,6 @@ export default function App() {
 			<Parallax ref={parallax} pages={2}>
 				<HomePageParallaxLayer parallax={parallax} offset={0} />
 				<ServicesLayer parallax={parallax} offset={1} />
-	
-
-		
-
-			
-
-				{/* <ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '20%', marginLeft: '5%' }}
-					/>
-					<img
-						src={url('cloud')}
-						style={{ display: 'block', width: '15%', marginLeft: '75%' }}
-					/>
-				</ParallaxLayer>
-
-				<ParallaxLayer
-					offset={2.5}
-					speed={-0.4}
-					style={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-						pointerEvents: 'none',
-					}}>
-					<img src={url('earth')} style={{ width: '60%' }} />
-				</ParallaxLayer>
-
-
-
-				<ParallaxLayer
-					offset={2}
-					speed={-0}
-					style={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-					>
-					<img src={url('clients-main')} style={{ width: '40%' }} />
-				</ParallaxLayer> */}
 			</Parallax>
 		</div>
 	);

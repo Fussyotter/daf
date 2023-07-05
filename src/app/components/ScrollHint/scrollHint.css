@@ -55,3 +55,13 @@
 	bottom: 2%;
 	direction: ltr;
 }
+@media (max-width: 600px) {
+  .line {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Adjust as needed for your design */
+  }
+ 
+}
