@@ -55,6 +55,7 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax, offset }) => {
 				position={{ left: '2%', bottom: '10%' }}
 				branchSide='right'
 				isMinimized={true}
+				useOverlay={true}
 			/>
 		</ParallaxLayer>
 	);

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaChevronDown, FaBars } from 'react-icons/fa'; // FaBars will represent the minimized state
 import { useSpring, animated } from 'react-spring';
 import './scrollHint.css';
-import { useEffect, useRef } from 'react';
+import BranchOverlay from '../BranchOverlay/page';
 
 interface ScrollHintProps {
 	onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -12,7 +12,8 @@ interface ScrollHintProps {
 	duration?: number;
 	EndComponent?: React.ReactNode;
 	branchSide?: 'left' | 'right';
-	isMinimized?: boolean; // new prop to indicate whether the component should start in a minimized state
+	isMinimized?: boolean;
+	useOverlay?: boolean; 
 }
 
 const ScrollHint: React.FC<ScrollHintProps> = ({
@@ -23,9 +24,30 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 	duration = 2,
 	EndComponent,
 	branchSide = 'left',
-	isMinimized = false, // default value of the new prop is false, meaning component starts in its normal state
+	isMinimized = false,
+	useOverlay = false, 
 }) => {
-	const [isExpanded, setIsExpanded] = useState(!isMinimized); // state to control whether component is in its normal or minimized state
+	const [isExpanded, setIsExpanded] = useState(
+		window.innerWidth > 600 ? true : !isMinimized
+	);
+	const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+
+	useEffect(() => {
+function handleResize() {
+	if (useOverlay) {
+		setIsExpanded(false);
+	} else if (window.innerWidth > 600) {
+		setIsExpanded(true);
+	} else {
+		setIsExpanded(!isMinimized);
+	}
+}
+
+		window.addEventListener('resize', handleResize);
+
+		return () => window.removeEventListener('resize', handleResize);
+	}, [isMinimized]);
+
 	let lineStyle: React.CSSProperties = {
 		position: 'absolute',
 		width: '1px',
@@ -39,15 +61,17 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 		bottom: 0,
 		cursor: 'pointer',
 	};
-	  const handleEndComponentClick = (
-			event: React.MouseEvent<HTMLDivElement>
-		) => {
-			if (isMinimized) {
-				setIsExpanded(!isExpanded);
-			} else {
-				onClick(event);
-			}
-		};
+
+	const handleEndComponentClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		if (useOverlay) {
+			setIsOverlayVisible(!isOverlayVisible);
+		} else if (isMinimized) {
+			setIsExpanded(!isExpanded);
+		} else {
+			onClick(event);
+		}
+	};
+
 	const branchRefs = useRef<(HTMLSpanElement | null)[]>([]);
 	branchRefs.current = branchText.map((_, i) => branchRefs.current[i] ?? null);
 	useEffect(() => {
@@ -72,27 +96,43 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 	const branchSpacing = `${100 / (branchText.length + 1)}%`;
 
 	return (
-		 <div
-      className={`line ${branchSide}`}
-      style={isExpanded ? lineStyle : { ...lineStyle, height: '1px' }} // if component is not expanded, height is set to 1px to show just the button
-      onClick={(e) => {
-        e.stopPropagation();
-        if (isExpanded) onClick(e); // pass through click events to onClick only if component is expanded
-      }}
-    >
-      {isExpanded && branchText.map((text, index) => (
-        <span
-          className={`branch branch${index}`}
-          style={{ bottom: `${5 + (index / (branchText.length - 1)) * 50}%` }}
-        >
-          {text}
-        </span>
-      ))}
-      <animated.div style={{ ...props, ...endComponentStyle }} onClick={handleEndComponentClick}>
-        {EndComponent || (isExpanded ? <FaChevronDown className='chevron' size={30} /> : <FaBars className='chevron' size={30} />)}
-      </animated.div>
-    </div>
-  );
-};
+		<>
+			{useOverlay && isOverlayVisible && (
+				<BranchOverlay branchText={branchText} />
+			)}
+			<div
+				className={`line ${branchSide}`}
+				style={isExpanded ? lineStyle : { ...lineStyle, height: '1px' }}
+				onClick={(e) => {
+					e.stopPropagation();
+					if (isExpanded && !useOverlay) onClick(e); 
+				}}>
+				{isExpanded &&
+					!useOverlay &&
+					branchText.map((text, index) => (
+						<span
+							className={`branch branch${index}`}
+							style={{
+								bottom: `${5 + (index / (branchText.length - 1)) * 50}%`,
+							}}>
+							{text}
+						</span>
+					))}
+				<animated.div
+					style={{ ...props, ...endComponentStyle }}
+					onClick={handleEndComponentClick}>
+					{EndComponent ||
+						(useOverlay ? (
+							<FaBars className='chevron' size={30} />
+						) : isExpanded ? (
+							<FaChevronDown className='chevron' size={30} />
+						) : (
+							<FaBars className='chevron' size={30} />
+						))}
+				</animated.div>
+			</div>
+		</>
+	);
+}
 
 export default ScrollHint;
