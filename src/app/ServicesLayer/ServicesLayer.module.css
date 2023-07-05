@@ -1,18 +1,37 @@
-/* ServicesLayer.module.css */
+.titleBox {
+	position: relative; 
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	width: 60%; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 .container {
-	position: absolute;
-	left: 10%;
-	top: 10%;
-	width: 80%;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	/* height: 100%; */
+	width: 40%;
+}
+
+.rectanglesContainer {
+	height: 100%;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {
-	.container {
-		left: 5%;
-		top: 5%;
+	.container, .rectanglesContainer {
 		width: 90%;
+	}
+
+	.titleBox {
+		font-size: 0.8em;
 	}
 }
