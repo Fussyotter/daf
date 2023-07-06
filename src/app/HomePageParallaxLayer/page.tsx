@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { RefObject, useState, useEffect } from 'react';
 import { ParallaxLayer } from '@react-spring/parallax';
 import ScrollHint from '../components/ScrollHint/page';
 import AnimatedText from '../components/AnimatedText/page';
@@ -14,13 +14,26 @@ const HomePageParallaxLayer: React.FC<HomePageParallaxLayerProps> = ({
 	parallax,
 	offset,
 }) => {
+	    const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+		const handleResize = () => {
+			setWindowSize(window.innerWidth);
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		// Cleanup
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 return (
 	<ParallaxLayer
 		offset={offset}
 		speed={0.3}
 		style={{
 			display: 'flex',
-			flexDirection: 'column',
 			alignItems: 'flex-start',
 			justifyContent: 'center',
 		}}>
@@ -30,8 +43,9 @@ return (
 				width: '100%',
 				height: '100%',
 				display: 'flex',
-				flexDirection: 'row',
+				flexDirection: windowSize > 600 ? 'row' : 'column',
 				justifyContent: 'space-between',
+				padding: '1em',
 				zIndex: -1,
 			}}>
 			<div style={{ position: 'absolute', left: '5%', top: '5%' }}>
@@ -42,7 +56,7 @@ return (
 					position: 'absolute',
 					left: '50%',
 					transform: 'translate(-50%, 0)',
-					padding: '10px',
+					padding: '5px',
 					borderRadius: '5px',
 					boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
 				}}>
@@ -51,21 +65,22 @@ return (
 				<AnimatedText text='Friends' delay={2000} />
 				<AnimatedParagraph text='With Alison Yates' delay={2300} />
 			</div>
-			<div style={{ position: 'absolute', right: '5%', top: '5%' }}>
+			<div style={{ position: 'absolute', right: '2%', top: '5%' }}>
 				<button className='start-now-button'>Start Now</button>
 			</div>
 		</div>
 		<div
 			style={{
 				position: 'absolute',
-				top: '25%',
+				top: '20%',
+				left: '2%', // Adjust as necessary
 				width: '100%',
 				display: 'flex',
-				justifyContent: 'center',
+				flexDirection: 'column',
+				alignItems: 'center',
 			}}>
 			<AnimatedParagraph
-				text='A working actor helping other actors work more. 
-'
+				text='A working actor helping other actors work more.'
 				delay={3000}
 				style={{ fontSize: '.9em' }}
 			/>
@@ -75,6 +90,7 @@ return (
 				position: 'absolute',
 				top: '30%',
 				width: '100%',
+
 				display: 'flex',
 				justifyContent: 'center',
 				backgroundColor: 'rgba(0,0,0,0.5)',
@@ -85,6 +101,8 @@ return (
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
+					left: '2%', // Adjust as necessary
+
 					justifyContent: 'center',
 					position: 'relative',
 				}}>
@@ -93,6 +111,7 @@ return (
 					alt=''
 					style={{
 						width: '50%',
+
 						height: '60vh',
 						objectFit: 'cover',
 					}}
@@ -127,67 +146,10 @@ return (
 			]}
 			position={{ left: '2%', bottom: '10%' }}
 			branchSide='right'
+			useOverlay={windowSize <= 768 ? true : false} // Let's say 768px is the breakpoint
 		/>
 	</ParallaxLayer>
 );
 };
 
 export default HomePageParallaxLayer;
-
-
-{/* <HorizontalLine
-	top='75%'
-	direction='left'
-	delay={2}
-	width='300px'
-	EndComponent={
-		<AnimatedImage
-			src='/al1.jpeg'
-			alt='placeholder'
-			delay={3000}
-			style={{
-				height: '300px',
-				borderRadius: '10%',
-				boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
-			}}
-		/>
-	}
-/>
-<HorizontalLine
-	top='60%'
-	direction='left'
-	delay={2}
-	width='200px'
-	EndComponent={
-		<AnimatedParagraph
-			text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-			style={{
-				boxSizing: 'border-box',
-				fontSize: '.8em',
-				width: '200px',
-				height: '100px',
-			}}
-			delay={3000}
-		/>
-	}
-/>
-
-<HorizontalLine
-	top='70%'
-	direction='right'
-	delay={2}
-	width='400px'
-	EndComponent={
-		<AnimatedParagraph
-			text=' lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-			style={{
-				color: 'black',
-				boxSizing: 'border-box',
-				fontSize: '.8em',
-				width: '200px',
-				height: '100px',
-			}}
-			delay={3000}
-		/>
-	}
-/>  */}
