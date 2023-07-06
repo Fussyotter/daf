@@ -58,7 +58,7 @@ return (
 					transform: 'translate(-50%, 0)',
 					padding: '5px',
 					borderRadius: '5px',
-					boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', // soft shadow for depth
+					boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', 
 				}}>
 				<AnimatedText text='Dear' delay={1000} />
 				<AnimatedText text='Actor' delay={1500} />
@@ -73,7 +73,7 @@ return (
 			style={{
 				position: 'absolute',
 				top: '20%',
-				left: '2%', // Adjust as necessary
+				left: '2%',
 				width: '100%',
 				display: 'flex',
 				flexDirection: 'column',
@@ -101,8 +101,7 @@ return (
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
-					left: '2%', // Adjust as necessary
-
+					left: '2%',
 					justifyContent: 'center',
 					position: 'relative',
 				}}>
@@ -146,7 +145,7 @@ return (
 			]}
 			position={{ left: '2%', bottom: '10%' }}
 			branchSide='right'
-			useOverlay={windowSize <= 768 ? true : false} // Let's say 768px is the breakpoint
+			useOverlay={windowSize <= 768 ? true : false} 
 		/>
 	</ParallaxLayer>
 );
