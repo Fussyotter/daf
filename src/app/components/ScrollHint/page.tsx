@@ -25,23 +25,24 @@ const ScrollHint: React.FC<ScrollHintProps> = ({
 	EndComponent,
 	branchSide = 'left',
 	isMinimized = false,
-	useOverlay = false, 
+	useOverlay = false,
 }) => {
+	const [isVisible, setIsVisible] = useState(false);
 	const [isExpanded, setIsExpanded] = useState(
 		window.innerWidth > 600 ? true : !isMinimized
 	);
 	const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
 	useEffect(() => {
-function handleResize() {
-	if (useOverlay) {
-		setIsExpanded(false);
-	} else if (window.innerWidth > 600) {
-		setIsExpanded(true);
-	} else {
-		setIsExpanded(!isMinimized);
-	}
-}
+		function handleResize() {
+			if (useOverlay) {
+				setIsExpanded(false);
+			} else if (window.innerWidth > 600) {
+				setIsExpanded(true);
+			} else {
+				setIsExpanded(!isMinimized);
+			}
+		}
 
 		window.addEventListener('resize', handleResize);
 
@@ -62,15 +63,17 @@ function handleResize() {
 		cursor: 'pointer',
 	};
 
-	const handleEndComponentClick = (event: React.MouseEvent<HTMLDivElement>) => {
-		if (useOverlay) {
-			setIsOverlayVisible(!isOverlayVisible);
-		} else if (isMinimized) {
-			setIsExpanded(!isExpanded);
-		} else {
-			onClick(event);
-		}
-	};
+		const handleEndComponentClick = (
+			event: React.MouseEvent<HTMLDivElement>
+		) => {
+			if (useOverlay) {
+				setIsVisible(!isVisible);
+			} else if (isMinimized) {
+				setIsExpanded(!isExpanded);
+			} else {
+				onClick(event);
+			}
+		};
 
 	const branchRefs = useRef<(HTMLSpanElement | null)[]>([]);
 	branchRefs.current = branchText.map((_, i) => branchRefs.current[i] ?? null);
@@ -97,15 +100,19 @@ function handleResize() {
 
 	return (
 		<>
-			{useOverlay && isOverlayVisible && (
-				<BranchOverlay branchText={branchText} />
+			{useOverlay && (
+				<BranchOverlay
+					branchText={branchText}
+					isVisible={isVisible}
+					setIsVisible={setIsVisible}
+				/>
 			)}
 			<div
 				className={`line ${branchSide}`}
 				style={isExpanded ? lineStyle : { ...lineStyle, height: '1px' }}
 				onClick={(e) => {
 					e.stopPropagation();
-					if (isExpanded && !useOverlay) onClick(e); 
+					if (isExpanded && !useOverlay) onClick(e);
 				}}>
 				{isExpanded &&
 					!useOverlay &&
@@ -133,6 +140,6 @@ function handleResize() {
 			</div>
 		</>
 	);
-}
+};
 
 export default ScrollHint;

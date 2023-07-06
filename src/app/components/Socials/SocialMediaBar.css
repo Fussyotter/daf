@@ -1,18 +1,19 @@
 .social-media-bar {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	width: 50%;
 }
 
 .social-icon {
-	font-size: 3rem;
+	font-size: 1rem;
 	margin-right: 1rem;
 }
 
 .start-now-button {
-	padding: 10px;
-	font-size: 1.2rem;
+	padding: 5px 10px;
+	font-size: 1rem;
 	background: lightblue;
 	border: none;
 	border-radius: 5px;

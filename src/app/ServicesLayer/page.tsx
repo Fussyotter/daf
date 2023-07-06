@@ -21,6 +21,7 @@ const ServicesLayer: React.FC<ServicesLayerProps> = ({ parallax, offset }) => {
 				alignItems: 'center',
 				justifyContent: 'center',
 			}}>
+				
 			<div className={styles.titleBox}>
 				<AnimatedParagraph text='Services' delay={2300} />
 			</div>
